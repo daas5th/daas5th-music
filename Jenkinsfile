@@ -1,5 +1,10 @@
 pipeline {
-	agent any
+  
+  agent {
+      docker {
+          image 'maven:3-alpine'
+      }
+  }
 
 	stages {
 		stage('checkout') {
@@ -13,7 +18,7 @@ pipeline {
 			steps {
         echo "install modules!"
           sh '''
-            npm install
+             mvn --version
           '''
 			}
 		}
